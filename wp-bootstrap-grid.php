@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/benfurfie/Genesis-Bootstrap-Grid
  * 
  * Description: Adds the Bootstrap Grid to Genesis websites
- * Version: 0.2.3
+ * Version: 0.2.4
  * 
  * Author: Ben Furfie
  * Author URI: www.benfurfie.co.uk
@@ -73,81 +73,160 @@ function gbg_attributes_structural_wrap( $attributes ) {
 
 // Amends the output of the site-header section.
 
-add_filter( 'genesis_markup_site-header_output', 'gbg_header_new_markup', 99, 2 );
-/**
- * Add container to Genesis header. [H/T Chinmoy Paul | https://github.com/cpaul007]
- *
- * @since 0.2.3
- *
- */
-function gbg_header_new_markup( $tag, $args ) {
-  $tag .= '<div class="container">' . "\n";
-  
-  return $tag;
-}
+	add_filter( 'genesis_markup_site-header_output', 'gbg_header_new_markup', 99, 2 );
+	/**
+	 * Add container to Genesis header. [H/T Chinmoy Paul | https://github.com/cpaul007]
+	 *
+	 * @since 0.2.3
+	 *
+	 */
+	function gbg_header_new_markup( $tag, $args ) {
+	  $tag .= '<div class="container">' . "\n";
+	  
+	  return $tag;
+	}
 
-add_action( 'genesis_header', 'gbg_header_new_div_close', 15 );
-/**
- * Add container to Genesis header. [H/T Chinmoy Paul | https://github.com/cpaul007]
- *
- * @since 0.2.3
- *
- */
-function gbg_header_new_div_close() {
-  echo '</div>' . "\n";
-}
+	add_action( 'genesis_header', 'gbg_header_new_div_close', 15 );
+	/**
+	 * Add container to Genesis header. [H/T Chinmoy Paul | https://github.com/cpaul007]
+	 *
+	 * @since 0.2.3
+	 *
+	 */
+	function gbg_header_new_div_close() {
+	  echo '</div>' . "\n";
+	}
+
+// Adds a col-* to the header to correct alignment issues
+
+	add_filter( 'genesis_markup_site-header_output', 'gbg_header_col_markup', 99, 4 );
+	/**
+	 * Add col-md-12 to Genesis header.
+	 *
+	 * @since 0.2.4
+	 *
+	 */
+	function gbg_header_col_markup( $tag, $args ) {
+	  $tag .= '<div class="col-md-12">' . "\n";
+	  
+	  return $tag;
+	}
+
+	add_action( 'genesis_header', 'gbg_header_col_markup_close', 15 );
+	/**
+	 * Add col-md-12 to Genesis header.
+	 *
+	 * @since 0.2.4
+	 *
+	 */
+	function gbg_header_col_markup_close() {
+	  echo '</div>' . "\n";
+	}
 
 // Amends the output of the primary nav.
 
-add_filter( 'genesis_markup_nav-primary_output', 'gbg_nav_primary_new_markup', 99, 2 );
-/**
- * Add container to the Primary Nav
- *
- * @since 0.2.3
- *
- */
-function gbg_nav_primary_new_markup( $tag, $args ) {
-  $tag .= '<div class="container">' . "\n";
-  
-  return $tag;
-}
+	add_filter( 'genesis_markup_nav-primary_output', 'gbg_nav_primary_new_markup', 99, 2 );
+	/**
+	 * Add container to the Primary Nav
+	 *
+	 * @since 0.2.3
+	 *
+	 */
+	function gbg_nav_primary_new_markup( $tag, $args ) {
+	  $tag .= '<div class="container">' . "\n";
+	  
+	  return $tag;
+	}
 
-add_action( 'genesis_header', 'gbg_nav_primary_new_div_close', 15 );
-/**
- * Add container to the Primary Nav
- *
- * @since 0.2.3
- *
- */
-function gbg_nav_primary_new_div_close() {
-  echo '</div>' . "\n";
-}
+
+	add_action( 'genesis_header', 'gbg_nav_primary_new_div_close', 15 );
+	/**
+	 * Add container to the Primary Nav
+	 *
+	 * @since 0.2.3
+	 *
+	 */
+	function gbg_nav_primary_new_div_close() {
+	  echo '</div>' . "\n";
+	}
+
+// Adds a col-* to the primary navigation to correct alignment issues
+
+	add_filter( 'genesis_markup_nav-primary_output', 'gbg_nav_primary_col_markup', 99, 4 );
+	/**
+	 * Add col-md-12 to Genesis nav.
+	 *
+	 * @since 0.2.4
+	 *
+	 */
+	function gbg_nav_primary_col_markup( $tag, $args ) {
+	  $tag .= '<div class="col-md-12">' . "\n";
+	  
+	  return $tag;
+	}
+
+	add_action( 'genesis_header', 'gbg_nav_primary_col_markup_close', 15 );
+	/**
+	 * Add col-md-12 to Genesis nav.
+	 *
+	 * @since 0.2.4
+	 *
+	 */
+	function gbg_nav_primary_col_markup_close() {
+	  echo '</div>' . "\n";
+	}
 
 // Amends the output of the primary nav.
 
-add_filter( 'genesis_markup_site-footer_output', 'gbg_footer_new_markup', 99, 2 );
-/**
- * Add container to the Primary Nav
- *
- * @since 0.2.3
- *
- */
-function gbg_footer_new_markup( $tag, $args ) {
-  $tag .= '<div class="container">' . "\n";
-  
-  return $tag;
-}
+	add_filter( 'genesis_markup_site-footer_output', 'gbg_footer_new_markup', 99, 2 );
+	/**
+	 * Add container to the Primary Nav
+	 *
+	 * @since 0.2.3
+	 *
+	 */
+	function gbg_footer_new_markup( $tag, $args ) {
+	  $tag .= '<div class="container">' . "\n";
+	  
+	  return $tag;
+	}
 
-add_action( 'genesis_footer', 'gbg_footer_new_div_close', 15 );
-/**
- * Add container to the Primary Nav
- *
- * @since 0.2.3
- *
- */
-function gbg_footer_new_div_close() {
-  echo '</div>' . "\n";
-}
+	add_action( 'genesis_footer', 'gbg_footer_new_div_close', 15 );
+	/**
+	 * Add container to the Primary Nav
+	 *
+	 * @since 0.2.3
+	 *
+	 */
+	function gbg_footer_new_div_close() {
+	  echo '</div>' . "\n";
+	}
+
+// Adds a col-* to the footer to correct alignment issues
+
+	add_filter( 'genesis_markup_site-footer_output', 'gbg_footer_col_markup', 99, 4 );
+	/**
+	 * Add col-md-12 to Genesis nav.
+	 *
+	 * @since 0.2.4
+	 *
+	 */
+	function gbg_footer_col_markup( $tag, $args ) {
+	  $tag .= '<div class="col-md-12">' . "\n";
+	  
+	  return $tag;
+	}
+
+	add_action( 'genesis_footer', 'gbg_footer_col_markup_close', 15 );
+	/**
+	 * Add col-md-12 to Genesis nav.
+	 *
+	 * @since 0.2.4
+	 *
+	 */
+	function gbg_footer_col_markup_close() {
+	  echo '</div>' . "\n";
+	}
 
 add_filter( 'genesis_attr_content', 'gbg_attributes_content', 99 );
 function gbg_attributes_content( $attributes ) {

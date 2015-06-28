@@ -11,6 +11,7 @@
  * License: GPL2
  * 
  */
+
 .container {
   margin-right: auto;
   margin-left: auto;
@@ -681,3 +682,9 @@
 
   .col-lg-offset-12 {
     margin-left: 100%; } }
+
+/* Override the site-header minimum height
+----------------------------*/
+.site-header {
+  min-height: auto;
+}
