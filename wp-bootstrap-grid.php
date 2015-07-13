@@ -4,7 +4,7 @@
  * Plugin URI: https://github.com/benfurfie/Genesis-Bootstrap-Grid
  * 
  * Description: Adds the Bootstrap Grid to Genesis websites
- * Version: 0.2.4
+ * Version: 0.2.5
  * 
  * Author: Ben Furfie
  * Author URI: www.benfurfie.co.uk
@@ -176,7 +176,63 @@ function gbg_attributes_structural_wrap( $attributes ) {
 	  echo '</div>' . "\n";
 	}
 
-// Amends the output of the primary nav.
+//
+
+// Amends the output of the footer-widgets section.
+
+	add_filter( 'genesis_markup_footer-widgets_output', 'gbg_footer_widgets_new_markup', 99, 2 );
+	/**
+	 * Add container to Genesis header. [H/T Chinmoy Paul | https://github.com/cpaul007]
+	 *
+	 * @since 0.2.5
+	 *
+	 */
+	function gbg_footer_widgets_new_markup( $tag, $args ) {
+	  $tag .= '<div class="container">' . "\n";
+	  
+	  return $tag;
+	}
+
+	add_action( 'genesis_before_footer', 'gbg_footer_widgets_new_div_close', 15 );
+	/**
+	 * Add container to Genesis header. [H/T Chinmoy Paul | https://github.com/cpaul007]
+	 *
+	 * @since 0.2.5
+	 *
+	 */
+	function gbg_footer_widgets_new_div_close() {
+	  echo '</div>' . "\n";
+	}
+
+// Adds a col-* to the footer-widgets to correct alignment issues
+
+	add_filter( 'genesis_markup_footer-widgets_output', 'gbg_footer_widgets_col_markup', 99, 4 );
+	/**
+	 * Add col-md-12 to Genesis header.
+	 *
+	 * @since 0.2.5
+	 *
+	 */
+	function gbg_footer_widgets_col_markup( $tag, $args ) {
+	  $tag .= '<div class="col-md-12">' . "\n";
+	  
+	  return $tag;
+	}
+
+	add_action( 'genesis_before_footer', 'gbg_footer_widgets_col_markup_close', 15 );
+	/**
+	 * Add col-md-12 to Genesis header.
+	 *
+	 * @since 0.2.5
+	 *
+	 */
+	function gbg_footer_widgets_col_markup_close() {
+	  echo '</div>' . "\n";
+	}
+
+//
+
+// Amends the output of the site footer.
 
 	add_filter( 'genesis_markup_site-footer_output', 'gbg_footer_new_markup', 99, 2 );
 	/**
